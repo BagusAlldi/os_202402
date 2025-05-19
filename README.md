@@ -27,14 +27,7 @@ Perintah ini akan mengunduh seluruh isi repository ke folder `os-240202852` di d
 
 ---
 
-### 4. **Masuk ke Folder Project**
-```bash
-cd os-240202852
-```
-
----
-
-### 5. **Cek Remote Repository**
+### 4. **Cek Remote Repository**
 Pastikan remote sudah benar:
 ```bash
 git remote -v
@@ -47,7 +40,7 @@ origin  https://github.com/alvareedais/os-240202852.git (push)
 
 ---
 
-### 6. **Menarik Perubahan Terbaru (Pull)**
+### 5.**Menarik Perubahan Terbaru (Pull)**
 Jika ada perubahan terbaru di GitHub, bisa diambil dengan:
 ```bash
 git pull origin master
@@ -60,7 +53,7 @@ git pull origin main
 
 ---
 
-### 7. **Mengirim Perubahan ke GitHub**
+### 6.**Mengirim Perubahan ke GitHub**
 Setelah melakukan perubahan di file lokal:
 ```bash
 git add .
