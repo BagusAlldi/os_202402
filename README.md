@@ -70,13 +70,4 @@ Atau gunakan `main` jika branch utama bernama `main`.
 
 ---
 
-## **Kesimpulan**
-Dengan mengikuti langkah di atas, Anda sudah berhasil mengkaitkan dan mengelola repository GitHub `os-240202852` di perangkat PC menggunakan Git CMD.
 
-Jika ada kendala atau pesan error tertentu, silakan lampirkan agar bisa dibantu lebih lanjut!
-
-Citations:
-[1] https://github.com/alvareedais/os-240202852.git
-
----
-Jawaban dari Perplexity: pplx.ai/share
