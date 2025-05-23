@@ -1,72 +1,147 @@
+---
 
-## Modul: Mengkaitkan Repository GitHub ke PC dengan Git CMD
+# **Modul Praktikum: Menghubungkan GitHub ke PC via SSH**
 
-### 1. **Pastikan Git Sudah Terinstall**
-Cek dengan perintah:
+**Tujuan:**  
+Mahasiswa dapat mengkoneksikan repository GitHub ke PC menggunakan SSH, serta melakukan commit dan push perubahan ke GitHub.
+
+---
+
+## **1. Persiapkan Git dan SSH Key**
+
+### **A. Pastikan Git Terinstal**
+
 ```bash
 git --version
 ```
-Jika belum terinstall, download dari [git-scm.com](https://git-scm.com/).
+Jika belum terinstal, instal sesuai sistem operasi Anda.
 
 ---
 
-### 2. **Konfigurasi Identitas Git (Jika Belum)**
+### **B. Konfigurasi Identitas Git**
+
 ```bash
 git config --global user.name "Nama Anda"
-git config --global user.email "email@domain.com"
+```
+```bash
+git config --global user.email "email@anda.com"
+```
+Verifikasi:
+```bash
+git config --list
 ```
 
 ---
 
-### 3. **Clone Repository GitHub ke PC**
-Buka Git CMD, lalu jalankan:
+## **2. Buat SSH Key**
+
+### **A. Generate SSH Key**
+
 ```bash
-git clone https://github.com/alvareedais/os-240202852.git
+ssh-keygen -t ed25519 -C "masukan emailmu"
 ```
-Perintah ini akan mengunduh seluruh isi repository ke folder `os-240202852` di direktori aktif.
+Tekan Enter untuk semua prompt (biarkan password kosong jika tidak ingin).
 
 ---
 
-### 4. **Cek Remote Repository**
-Pastikan remote sudah benar:
+### **B. Tambahkan SSH Key ke Agent**
+
 ```bash
-git remote -v
+eval "$(ssh-agent -s)"
 ```
-Hasilnya harus menampilkan:
-```
-origin  https://github.com/alvareedais/os-240202852.git (fetch)
-origin  https://github.com/alvareedais/os-240202852.git (push)
+```bash
+ssh-add ~/.ssh/id_ed25519
 ```
 
 ---
 
-### 5.**Menarik Perubahan Terbaru (Pull)**
-Jika ada perubahan terbaru di GitHub, bisa diambil dengan:
+## **3. Tambahkan SSH Key ke GitHub**
+
+### **A. Salin Public Key**
+
 ```bash
-git pull origin master
+cat ~/.ssh/id_ed25519.pub
 ```
-Atau:
-```bash
-git pull origin main
-```
-(Sesuaikan dengan nama branch utama di repo.)
+Salin seluruh output (mulai dari `ssh-ed25519`).
 
 ---
 
-### 6.**Mengirim Perubahan ke GitHub**
-Setelah melakukan perubahan di file lokal:
+### **B. Tambahkan ke GitHub**
+
+1. **Login ke GitHub**
+2. **Settings → SSH and GPG Keys**
+3. **Klik New SSH Key**
+4. **Tempelkan public key yang sudah dicopy**
+5. **Simpan**
+
+---
+
+## **4. Clone Repository via SSH**
+
+### **A. Salin URL SSH Repository**
+
+Di GitHub, pilih repository, klik **Code → SSH**, lalu salin URL (misal: `git@github.com:username/nama-repository.git`).
+
+---
+
+### **B. Clone ke PC**
+
+```bash
+git clone git@github.com:username/nama-repository.git
+cd nama-repository
+```
+
+---
+
+## **5. Proses Kerja, Commit, dan Push**
+
+### **A. Buat atau Ubah File**
+
+Buat atau edit file di dalam folder repository.
+
+---
+
+### **B. Tambahkan ke Staging**
+
 ```bash
 git add .
-git commit -m "nama file"
-git push origin master
 ```
-Atau gunakan `main` jika branch utama bernama `main`.
+atau
+```bash
+git add nama_file
+```
 
 ---
 
-## **Tips Otentikasi**
-- Jika diminta username & password, gunakan username GitHub dan Personal Access Token (bukan password GitHub biasa).
-- Untuk kemudahan, bisa juga menggunakan SSH (lihat langkah opsional pada jawaban sebelumnya).
+### **C. Commit Perubahan**
+
+```bash
+git commit -m "Deskripsi perubahan"
+```
+
+---
+
+### **D. Push ke GitHub**
+
+```bash
+git push origin main
+```
+(Ganti `main` dengan nama branch Anda jika berbeda)
+
+---
+
+## **6. Ringkasan Proses SSH**
+
+| Langkah                | Perintah/Prosedur                                  |
+|------------------------|----------------------------------------------------|
+| Instalasi Git          | `git --version`                                    |
+| Konfigurasi Identitas  | `git config --global user.name/email`              |
+| Generate SSH Key       | `ssh-keygen -t ed25519 -C "email@anda.com"`        |
+| Tambah Key ke GitHub   | Tempelkan isi `~/.ssh/id_ed25519.pub` ke GitHub    |
+| Clone via SSH          | `git clone git@github.com:username/nama-repo.git`  |
+| Tambah ke Staging      | `git add .` atau `git add nama_file`               |
+| Commit                 | `git commit -m "pesan"`                            |
+| Push                   | `git push origin main`                             |
 
 ---
 
