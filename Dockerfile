@@ -1,20 +1,15 @@
-FROM debian:bullseye
+#menggunakan base image ubuntu
+From ubuntu:22.04
 
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    git \
-    qemu-system-x86 \
-    python3 \
-    curl \
-    make \
-    gcc \
-    gdb \
-    nasm \
-    libgcc-9-dev \
-    && rm -rf /var/lib/apt/lists/*
+#update dan install paket dasar
+Run apt-get && apt-get install -y \
+bash \
+nano \
+curl \
+wget \
+iputils-ping \
+procps \
+net-tools
 
-WORKDIR /xv6
-
-RUN git clone https://github.com/mit-pdos/xv6-public.git .
-
+#set Defalut Shell
 CMD ["/bin/bash"]
