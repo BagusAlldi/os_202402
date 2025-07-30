@@ -56,4 +56,44 @@ Dua program uji digunakan untuk mengonfirmasi keberhasilan implementasi:
 Hasil uji coba disimpan dalam folder `screenshot`. Berikut cuplikan contoh output:
 
 ### 📍 Contoh Output `ptest`:
+== Info Proses Aktif ==
+PID MEM NAME
+1 4096 init
+2 2048 sh
+3 2048 ptest
+
+### 📍 Contoh Output `rtest`:
+
+Read Count Sebelum: 4
+hello
+Read Count Setelah: 5
+
+
+---
+
+## ⚠️ Tantangan dan Solusi
+
+Beberapa kendala yang ditemui selama pengerjaan antara lain:
+
+1. **Kesalahan Tipe Data dan Format**  
+   Misalnya mendeklarasikan tipe variabel yang tidak sesuai sehingga menyebabkan error saat kompilasi.
+
+2. **System Call Tidak Terdeteksi**  
+   Terjadi akibat lupa mendaftarkan syscall di file `syscall.h`, `syscall.c`, atau `usys.S`.
+
+3. **Kernel Panic saat Akses Pointer**  
+   Disebabkan ukuran struct yang salah saat menggunakan `argptr()`, kemudian diperbaiki dengan memastikan ukuran parameter tepat.
+
+4. **Struktur Tidak Terbaca oleh User**  
+   Pointer yang dikirim dari user-space belum valid atau belum dialokasikan dengan baik.
+
+---
+
+## 📚 Referensi
+
+- Buku xv6 (MIT): [https://pdos.csail.mit.edu/6.828/2018/xv6/book-rev11.pdf](https://pdos.csail.mit.edu/6.828/2018/xv6/book-rev11.pdf)  
+- Repositori xv6-public: [https://github.com/mit-pdos/xv6-public](https://github.com/mit-pdos/xv6-public)  
+- Diskusi praktikum, GitHub Issues, dan Stack Overflow
+
+---
 
