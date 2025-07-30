@@ -56,18 +56,24 @@ Dua program uji digunakan untuk mengonfirmasi keberhasilan implementasi:
 Hasil uji coba disimpan dalam folder `screenshot`. Berikut cuplikan contoh output:
 
 ### 📍 Contoh Output `ptest`:
+
+```
 == Info Proses Aktif ==
-PID MEM NAME
-1 4096 init
-2 2048 sh
-3 2048 ptest
+PID     MEM     NAME
+1       4096    init
+2       2048    sh
+3       2048    ptest
+```
 
 ### 📍 Contoh Output `rtest`:
 
+```
 Read Count Sebelum: 4
 hello
 Read Count Setelah: 5
 
+```
+---
 
 ---
 
